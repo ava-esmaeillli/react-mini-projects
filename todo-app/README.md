@@ -5,7 +5,7 @@ This project was created as a practical exercise to learn and strengthen React f
 
 ## 🚀 Live Demo
 
-[View Live Demo](https://ava-esmaeillli.github.io/react-mini-projects/)
+[View Live Demo](https://ava-esmaeillli.github.io/react-mini-projects/todo-app/)
 
 ## ✨ Features
 
