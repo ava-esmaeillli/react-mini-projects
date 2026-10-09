@@ -2,7 +2,11 @@
 
 A responsive login page built with React and Tailwind CSS, including form validation, a simulated authentication flow, token storage, and protected routes.
 
-## Features
+## 🚀 Live Demo
+
+[View Live Demo](https://ava-esmaeillli.github.io/react-mini-projects/login-page/)
+
+## ✨ Features
 
 - Pixel-focused implementation of a Figma design
 - Fully responsive layout (the image panel is hidden on small screens)
@@ -14,7 +18,7 @@ A responsive login page built with React and Tailwind CSS, including form valida
 - Public `/login` route (redirects to `/dashboard` if already logged in)
 - Logout that removes the token
 
-## Tech Stack
+## 🛠️ Tech Stack
 
 - [React](https://react.dev/) (Vite)
 - [Tailwind CSS v4](https://tailwindcss.com/)
@@ -29,7 +33,7 @@ There is no real backend. The login is simulated in `src/services/auth.js`:
 | -------- | -------- |
 | `admin`  | `123456` |
 
-## Getting Started
+## 🚀 Getting Started
 
 1. Clone the repository and go to the project folder:
 
@@ -52,7 +56,7 @@ There is no real backend. The login is simulated in `src/services/auth.js`:
 
 4. Open the address shown in the terminal (usually `http://localhost:5173`).
 
-## Project Structure
+## 📁 Project Structure
 
 ```
 src/
@@ -66,7 +70,7 @@ src/
 └── main.jsx         # App entry point
 ```
 
-## How It Works
+## 🎯 How It Works
 
 1. The user submits the form and the inputs are validated.
 2. `login()` simulates an API call (1 second delay) and returns a token or an error.
@@ -74,7 +78,7 @@ src/
 4. `ProtectedRoute` checks for the token before showing the dashboard.
 5. Logout removes the token and redirects to `/login`.
 
-## Test Scenarios
+## 🔍 Test Scenarios
 
 - Empty username or password shows a validation error
 - Password shorter than 6 characters shows an error
