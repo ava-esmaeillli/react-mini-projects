@@ -1,12 +1,12 @@
 import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { HashRouter, Routes, Route } from "react-router-dom";
 import {ProtectedRoute , PublicRoute} from './routes/ProtectedRoute'
 
 function App() {
   return (
     <section>
-      <BrowserRouter>
+      <HashRouter>
         <Routes>
           <Route
             path="/"
@@ -33,7 +33,7 @@ function App() {
             }
           />
         </Routes>
-      </BrowserRouter>
+      </HashRouter>
     </section>
   );
 }

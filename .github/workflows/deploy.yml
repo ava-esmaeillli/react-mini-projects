@@ -1,4 +1,4 @@
-name: Deploy Todo App
+name: Deploy Mini Projects
 
 on:
   push:
@@ -9,6 +9,10 @@ permissions:
   contents: read
   pages: write
   id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
 
 jobs:
   build:
@@ -22,35 +26,43 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 22
-          cache: npm
-          cache-dependency-path: todo-app/package-lock.json
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
-      - name: Install dependencies
+      - name: Build Todo App
         working-directory: todo-app
-        run: npm ci
-
-      - name: Build
-        working-directory: todo-app
-        run: npm run build
-
-      - name: Prepare Todo App
         run: |
-          mkdir -p deploy/todo-app
-          cp -r todo-app/dist/* deploy/todo-app/
+          npm ci
+          npm run build
 
-      - name: Create root redirect
+      - name: Build Login Page
+        working-directory: login-page
+        run: |
+          npm ci
+          npm run build
+
+      - name: Prepare deploy folder
+        run: |
+          mkdir -p deploy/todo-app deploy/login-page
+          cp -r todo-app/dist/* deploy/todo-app/
+          cp -r login-page/dist/* deploy/login-page/
+
+      - name: Create root index
         run: |
           cat > deploy/index.html <<'EOF'
           <!DOCTYPE html>
           <html>
             <head>
-              <meta http-equiv="refresh" content="0; url=./todo-app/">
+              <meta charset="UTF-8" />
+              <title>React Mini Projects</title>
             </head>
             <body>
-              <a href="./todo-app/">Open Todo App</a>
+              <h1>React Mini Projects</h1>
+              <ul>
+                <li><a href="./todo-app/">Todo App</a></li>
+                <li><a href="./login-page/">Login Page</a></li>
+              </ul>
             </body>
           </html>
           EOF
